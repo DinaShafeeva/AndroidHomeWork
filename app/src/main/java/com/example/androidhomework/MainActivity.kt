@@ -15,12 +15,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         button_reset.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(view: View): Unit {
+             override fun onClick(view: View): Unit {
                 val intent = Intent(this@MainActivity, ResetPasswordActivity::class.java);
                 startActivity(intent); }
         })
 
-        button_login.setOnClickListener({ x -> onClick() });
+        button_login.setOnClickListener{ onClick() };
 
         et_sign_in_pass.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
