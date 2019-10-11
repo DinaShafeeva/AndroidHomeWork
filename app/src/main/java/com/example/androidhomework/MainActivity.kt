@@ -14,12 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        button_reset.setOnClickListener(object : View.OnClickListener {
-             override fun onClick(view: View): Unit {
-                val intent = Intent(this@MainActivity, ResetPasswordActivity::class.java);
-                startActivity(intent); }
-        })
-
+        button_reset.setOnClickListener {onClick2()};
         button_login.setOnClickListener{ onClick() };
 
         et_sign_in_pass.addTextChangedListener(object : TextWatcher {
@@ -42,6 +37,10 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, FinalActivity::class.java)
             startActivity(intent)
         }else setPasswordError()
+    }
+    fun onClick2() {
+        val intent = Intent(this, ResetPasswordActivity::class.java)
+        startActivity(intent)
     }
 
     fun setPasswordError() {
