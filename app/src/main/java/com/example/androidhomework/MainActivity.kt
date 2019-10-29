@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, requestCode, data)
+        super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_SHARE && resultCode == Activity.RESULT_OK) {
             Toast.makeText(this, "Shared", Toast.LENGTH_SHORT).show()
         } else {
