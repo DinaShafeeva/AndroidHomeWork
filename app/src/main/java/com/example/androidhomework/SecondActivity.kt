@@ -11,6 +11,6 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         val intent: Intent = intent
-        textView_secondActivity_text.text = intent.extras.get(Intent.EXTRA_TEXT).toString()
+        tv_open_second_activity.text = intent.extras?.get(Intent.EXTRA_TEXT).toString()
     }
 }
