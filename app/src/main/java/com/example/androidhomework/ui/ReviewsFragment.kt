@@ -21,4 +21,3 @@ class ReviewsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_reviews, container, false)
     }
 }
-
