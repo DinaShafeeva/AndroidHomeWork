@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/choose_preferences_fragment"
+        tools:context=".ui.ChoosePreferencesFragment">
+
+    <TextView
+            android:id="@+id/tv_choose_preferences"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Choose 3 your favorite film genres:"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+    <EditText
+            android:id="@+id/et_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Add film genre" />
+
+    <EditText
+            android:id="@+id/et_second"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Again" />
+
+    <EditText
+            android:id="@+id/et_third"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="And again" />
+
+    <Button
+            android:id="@+id/btn_add_genres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="#FFFFFF"
+            android:text="Add" />
+
+</FrameLayout>
