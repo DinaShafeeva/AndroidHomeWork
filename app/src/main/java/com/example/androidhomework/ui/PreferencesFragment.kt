@@ -26,13 +26,17 @@ class PreferencesFragment : Fragment() {
     private fun nextFragment() {
         fragmentManager.also {
             it?.beginTransaction()?.apply {
+                setCustomAnimations(
+                    R.anim.enter_from_left,
+                    R.anim.exit_from_right
+                )
                 replace(R.id.nav_host_fragment, ChoosePreferencesFragment.newInstance())
                 fragmentManager?.popBackStack()
                 addToBackStack(ChoosePreferencesFragment::class.java.name)
                 commit()
             }
+            }
         }
-    }
 
     companion object {
         fun newInstance(): PreferencesFragment = PreferencesFragment()

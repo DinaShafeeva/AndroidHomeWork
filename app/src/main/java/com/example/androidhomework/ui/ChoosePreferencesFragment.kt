@@ -27,16 +27,24 @@ class ChoosePreferencesFragment : Fragment() {
         return view
     }
 
-    private fun nextFragment(name: String, curse: String, thing: String) {
+    private fun nextFragment(first: String, second: String, third: String) {
         fragmentManager.also {
             it?.beginTransaction()?.apply {
-                replace(R.id.choose_preferences_fragment, ShowPreferencesFragment.newInstance())
+                setCustomAnimations(
+                    R.anim.enter_from_top,
+                    R.anim.exit_to_bottom
+                )
+                replace(
+                    R.id.nav_host_fragment,
+                    ShowPreferencesFragment.newInstance(first, second, third)
+                )
                 fragmentManager?.popBackStack()
                 addToBackStack(ShowPreferencesFragment::class.java.name)
                 commit()
             }
+            }
         }
-    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

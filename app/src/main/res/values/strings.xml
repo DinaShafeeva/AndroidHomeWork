@@ -14,4 +14,9 @@
     <string name="menu_preferences">My preferences</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <integer name="slide_anim_duration_enter">1000</integer>
+    <integer name="slide_anim_duration_exit">1000</integer>
+    <integer name="slide_down_duration">1500</integer>
+    <integer name="slide_transition_duration">1500</integer>
 </resources>

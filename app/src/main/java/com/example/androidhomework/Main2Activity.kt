@@ -50,7 +50,7 @@ class Main2Activity : AppCompatActivity(), ProfileFragment.OnFragmentInteraction
 //        supportFragmentManager.also {
 //            it.beginTransaction().apply {
 //                //                 setCustomAnimations(
-////                   R.anim.enter_from_right,
+////                   R.anim.exit_from_right,
 ////                  R.anim.exit_to_left,
 ////                R.anim.enter_from_left,
 ////                R.anim.exit_to_right
@@ -138,7 +138,7 @@ class Main2Activity : AppCompatActivity(), ProfileFragment.OnFragmentInteraction
 ////        supportFragmentManager.also {
 ////            it.beginTransaction().apply {
 ////                //                 setCustomAnimations(
-//////                   R.anim.enter_from_right,
+//////                   R.anim.exit_from_right,
 //////                  R.anim.exit_to_left,
 //////                R.anim.enter_from_left,
 //////                R.anim.exit_to_right

@@ -22,9 +22,9 @@ class ShowPreferencesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val first: String = arguments?.getString("name").toString()
-        val second: String = arguments?.getString("curse").toString()
-        val third: String = arguments?.getString("thing").toString()
+        val first: String = arguments?.getString("first").toString()
+        val second: String = arguments?.getString("second").toString()
+        val third: String = arguments?.getString("third").toString()
         tv_first.text = first
         tv_second.text = second
         tv_third.text = third
@@ -37,7 +37,7 @@ class ShowPreferencesFragment : Fragment() {
         private const val THIRD = "third"
 
         fun newInstance(first: String = "NULL", second: String = "NULL", third: String = "NULL"):
-                ShowPreferencesFragment = newInstance().apply {
+                ShowPreferencesFragment = ShowPreferencesFragment().apply {
             arguments = Bundle().apply {
                 putString(FIRST, first)
                 putString(SECOND, second)
