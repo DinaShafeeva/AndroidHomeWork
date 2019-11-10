@@ -3,28 +3,28 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/mobile_navigation"
-        app:startDestination="@+id/nav_home">
+        app:startDestination="@+id/nav_profile">
 
     <fragment
-            android:id="@+id/nav_home"
+            android:id="@+id/nav_profile"
             android:name="com.example.androidhomework.ui.ProfileFragment"
             android:label="@string/menu_profile"
             tools:layout="@layout/fragment_profile" />
 
     <fragment
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_news"
             android:name="com.example.androidhomework.ui.NewsFragment"
             android:label="@string/menu_news"
             tools:layout="@layout/fragment_news" />
 
     <fragment
-            android:id="@+id/nav_send"
+            android:id="@+id/nav_reviews"
             android:name="com.example.androidhomework.ui.ReviewsFragment"
             android:label="@string/menu_reviews"
             tools:layout="@layout/fragment_reviews" />
     <fragment
             android:id="@+id/nav_preferences"
-            android:name="com.example.androidhomework.ui.ReviewsFragment"
+            android:name="com.example.androidhomework.ui.PreferencesFragment"
             android:label="@string/menu_preferences"
             tools:layout="@layout/fragment_preferences" />
 </navigation>

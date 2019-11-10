@@ -3,6 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/fragment_preferences"
         tools:context=".ui.ReviewsFragment">
 
     <TextView
@@ -20,6 +21,6 @@
             android:layout_marginHorizontal="80dp"
             android:layout_marginTop="300dp"
             android:backgroundTint="#FFC107"
-            android:text="Add your favorite film genre" />
+            android:text="Add your favorite film genres" />
 
 </FrameLayout>
