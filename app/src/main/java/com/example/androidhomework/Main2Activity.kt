@@ -43,6 +43,7 @@ class Main2Activity : AppCompatActivity(), ProfileFragment.OnFragmentInteraction
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
 }
 
 //    override fun onFragmentInteraction(sum: Int) {
