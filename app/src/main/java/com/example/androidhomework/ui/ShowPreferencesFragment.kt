@@ -16,7 +16,7 @@ class ShowPreferencesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater!!.inflate(R.layout.fragment_show_preferences, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_show_preferences, container, false)
         return view
     }
 

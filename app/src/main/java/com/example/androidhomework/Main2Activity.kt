@@ -14,7 +14,6 @@ import com.google.android.material.navigation.NavigationView
 
 class Main2Activity : AppCompatActivity(), ProfileFragment.OnFragmentInteractionListener {
     override fun onFragmentInteraction(sum: Int) {
-        TODO("not implemented")
     }
 
     private lateinit var appBarConfiguration: AppBarConfiguration
