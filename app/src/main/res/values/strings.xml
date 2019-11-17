@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AndroidHomeWork</string>
+    <string name="first">Home</string>
+    <string name="second">Team</string>
+    <string name="third">Info</string>
+
 </resources>

@@ -1,0 +1,24 @@
+<com.google.android.material.appbar.AppBarLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        tools:ignore="MissingDefaultResource">
+
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll"
+            app:popupTheme="@android:color/holo_orange_light" />
+
+    <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:tabMode="scrollable"
+            app:tabGravity="fill" />
+
+</com.google.android.material.appbar.AppBarLayout>
