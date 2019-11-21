@@ -39,11 +39,11 @@
             android:layout_height="40dp"
             android:layout_margin="16dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:backgroundTint="#FFFFFF"
             android:src="@android:drawable/ic_delete"
             app:backgroundTint="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:rippleColor="@android:color/white" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
     <View
             android:layout_width="0dp"

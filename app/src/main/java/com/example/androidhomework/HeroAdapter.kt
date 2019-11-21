@@ -1,12 +1,12 @@
 package com.example.androidhomework
 
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.ListAdapter
 
 class HeroAdapter(
-    private var dataSource: List<Hero>,
-    private val clickLambda: (String, String, Hero) -> Unit
-) : RecyclerView.Adapter<HeroHolder>() {
+    private var dataSource: ArrayList<Hero>,
+    private val clickLambda: (Hero) -> Unit
+) : ListAdapter<Hero, HeroHolder>(Diff) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeroHolder =
         HeroHolder.create(parent, clickLambda)
@@ -16,19 +16,33 @@ class HeroAdapter(
     override fun onBindViewHolder(holder: HeroHolder, position: Int) =
         holder.bind(dataSource[position])
 
-    fun add(name: String, power: String, index: Int) {
-        val temp = dataSource.toMutableList()
-        val hero: Hero = Hero(name, power);
-        temp.add(index, hero)
-        dataSource = temp
-        notifyItemRangeChanged(1, temp.size)
+//    fun add(name: String, power: String, index: Int) {
+//        val temp = dataSource.toMutableList()
+//        val hero: Hero = Hero(name, power);
+//        temp.add(index, hero)
+//        dataSource = temp
+//        notifyItemRangeChanged(1, temp.size)
+//    }
+
+    override fun submitList(list: MutableList<Hero>?) {
+        super.submitList(list)
     }
 
-    fun delete(index: Int) {
-        val list: MutableList<Hero> = dataSource.toMutableList()
-        list.removeAt(index)
-        dataSource = list
-        notifyItemRangeChanged(0, list.size)
+    fun updateList(newList: ArrayList<Hero>) {
+        androidx.recyclerview.widget.DiffUtil.calculateDiff(
+            DiffUtil(this.dataSource, newList),
+            true
+        )
+            .dispatchUpdatesTo(this)
+        this.dataSource.clear()
+        this.dataSource.addAll(newList)
     }
+
+//    fun delete(hero: Hero) {
+//        val list: MutableList<Hero> = dataSource.toMutableList()
+//        list.remove(hero)
+//        dataSource = list
+//        notifyItemRangeChanged(0, list.size)
+//    }
 
 }

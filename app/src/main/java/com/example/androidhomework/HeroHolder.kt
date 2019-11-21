@@ -10,19 +10,19 @@ import kotlinx.android.synthetic.main.item_hero.*
 
 class HeroHolder(
     override val containerView: View,
-    private val clickLambda: (String, String, Hero) -> Unit
+    private val clickLambda: (Hero) -> Unit
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     fun bind(hero: Hero) {
         tv_name.text = hero.name
         tv_power.text = hero.power
         itemView.setOnClickListener {
-            clickLambda(hero.name, hero.power, hero)
+            clickLambda(hero)
         }
     }
 
     companion object {
-        fun create(parent: ViewGroup, clickLambda: (String, String, Hero) -> Unit) =
+        fun create(parent: ViewGroup, clickLambda: (Hero) -> Unit) =
             HeroHolder(
                 LayoutInflater.from(parent.context).inflate(R.layout.item_hero, parent, false),
                 clickLambda
