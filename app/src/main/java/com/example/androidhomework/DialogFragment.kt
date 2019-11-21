@@ -31,11 +31,6 @@ class DialogFragment : androidx.fragment.app.DialogFragment() {
 
         view.btn_add_dialog.setOnClickListener {
             rv_hero.adapter = adapter
-//            adapter?.add(
-//                et_name_dialog.text.toString(),
-//                et_power_dialog.text.toString(),
-//                et_index_dialog.text.toString().toInt()
-//            )
         }
 
         view.btn_cancel_dialog.setOnClickListener {

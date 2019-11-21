@@ -17,21 +17,6 @@ class SecondFragment : Fragment() {
     private val list: ArrayList<Hero> = getDataSource()
 
     private var adapter: HeroAdapter? = null
-    private val dialogFragment: DialogFragment? = null;
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.fragment_second)
-//
-//        adapter = HeroAdapter(getDataSource()) { name, power, hero ->
-//                 }
-//
-//        rv_hero.adapter = adapter
-//    }
-//
-//    private fun setContentView(fragmentSecond: Int) {
-//
-//    }
 
     private fun getDataSource(): ArrayList<Hero> = arrayListOf(
         Hero("IronMan", "Iron suit and harisma"),
@@ -43,7 +28,6 @@ class SecondFragment : Fragment() {
         Hero("ScarletWitch", "Magic"),
         Hero("Vision", "Technology and Mind Stone")
     )
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,8 +64,8 @@ class SecondFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
-                val position = viewHolder.adapterPosition
-                list.removeAt(position)
+                val index = viewHolder.adapterPosition
+                list.removeAt(index)
                 adapter?.updateList(list)
             }
         }
