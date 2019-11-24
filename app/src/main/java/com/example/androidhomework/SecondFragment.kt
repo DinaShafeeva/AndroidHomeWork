@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_second.*
-import kotlinx.android.synthetic.main.item_hero.*
 
 class SecondFragment : Fragment() {
 
@@ -40,12 +39,10 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = HeroAdapter(getDataSource()) { hero ->
-            btn_delete.setOnClickListener {
                 delete(hero)
-            }
-            setRecyclerViewItemTouchListener()
         }
         rv_hero.adapter = adapter
+        setRecyclerViewItemTouchListener()
 
         btn_show_dialog.setOnClickListener {
             showDialog()
