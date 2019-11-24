@@ -12,8 +12,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = FilmsAdapter(getDataSource()) { name, producer, description, image, _, _ ->
-            navigateToSecondActivity(name, producer, description, image)
+        adapter = FilmsAdapter(getDataSource()) { film ->
+            navigateToSecondActivity(film.name, film.producer, film.description, film.image)
         }
 
         rv_films.adapter = adapter

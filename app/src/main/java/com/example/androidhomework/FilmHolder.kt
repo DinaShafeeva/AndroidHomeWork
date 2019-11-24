@@ -5,12 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
-import kotlinx.android.synthetic.main.item_film.*
-
 
 class FilmHolder(
     override val containerView: View,
-    private val clickLambda: (String, String, String, Int, Int, Film) -> Unit
+    private val clickLambda: (Film) -> Unit
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
     fun bind(film: Film) {
@@ -20,14 +18,14 @@ class FilmHolder(
         iv_main.setImageResource(film.image)
 
         itemView.setOnClickListener {
-            clickLambda(film.name, film.producer, film.description, film.image, 62, film)
+            clickLambda(film)
         }
     }
 
     companion object {
         fun create(
             parent: ViewGroup,
-            clickLambda: (String, String, String, Int, Int, Film) -> Unit
+            clickLambda: (Film) -> Unit
         ) =
             FilmHolder(
                 LayoutInflater.from(parent.context).inflate(R.layout.item_film, parent, false),
