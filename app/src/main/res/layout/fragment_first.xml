@@ -4,7 +4,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".FirstFragment"
-        android:background="@drawable/marvel">
+        android:background="@drawable/marvel5">
 
     <TextView
             android:layout_width="wrap_content"
@@ -15,5 +15,4 @@
             android:text="Hey! Choose your super team!"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="#FFFFFF" />
-
 </FrameLayout>

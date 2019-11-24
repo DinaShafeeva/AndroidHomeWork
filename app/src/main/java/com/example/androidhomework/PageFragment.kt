@@ -42,7 +42,7 @@ class PageFragment : Fragment() {
     }
 }
 
-private class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+public class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment =
         PageFragment.newInstance(position)

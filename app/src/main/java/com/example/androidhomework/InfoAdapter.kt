@@ -1,15 +1,16 @@
 package com.example.androidhomework
 
+import android.content.Context
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 class InfoAdapter(
     private var dataSource: List<Info>,
-    private val clickLambda: (String, Info) -> Unit
+    val context: Context?
 ) : RecyclerView.Adapter<InfoHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InfoHolder =
-        InfoHolder.create(parent, clickLambda)
+        InfoHolder.create(parent, context)
 
     override fun getItemCount(): Int = dataSource.size
 

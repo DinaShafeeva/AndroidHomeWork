@@ -98,11 +98,11 @@ class SecondFragment : Fragment() {
             list.add(index, Hero(name, power))
             adapter?.updateList(list)
         }
-
         dialogView.btn_cancel_dialog.setOnClickListener {
             dialog?.dismiss()
         }
     }
+
     companion object {
         fun newInstance(): SecondFragment = SecondFragment()
     }

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -12,7 +11,7 @@
         tools:ignore="MissingDefaultResource">
 
     <ImageView
-            android:id="@+id/ava_info"
+            android:id="@+id/iv_ava_info"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="start" />
@@ -34,6 +33,28 @@
             android:layout_height="200dp" />
 
 
+    <!--    <com.viewpagerindicator.CirclePageIndicator-->
+    <!--            android:id="@+id/indicator"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_alignParentBottom="true"-->
+    <!--            android:layout_centerHorizontal="true"-->
+    <!--            android:layout_marginStart="4dp"-->
+    <!--            android:layout_marginEnd="4dp"-->
+    <!--            android:gravity="bottom"-->
+    <!--            android:padding="10dp" />-->
+
+    <!--    <de.hdodenhof.circleimageview.CircleImageView-->
+    <!--            android:id="@+id/iv_photo"-->
+    <!--            android:layout_width="60dp"-->
+    <!--            android:layout_height="40dp"-->
+    <!--            android:layout_marginStart="4dp"-->
+    <!--            android:layout_marginTop="4dp"-->
+    <!--            android:layout_marginEnd="0dp"-->
+    <!--            android:scaleType="centerCrop"-->
+    <!--            card_view:border_color="#FF000000"-->
+    <!--            card_view:border_width="2dp" />-->
+
     <TextView
             android:id="@+id/tv_description_info"
             android:layout_width="wrap_content"
@@ -42,4 +63,10 @@
             android:layout_gravity="bottom"
             tools:text="Super powers" />
 
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="bottom"
+            android:background="#3F51B5" />
 </androidx.cardview.widget.CardView>
+

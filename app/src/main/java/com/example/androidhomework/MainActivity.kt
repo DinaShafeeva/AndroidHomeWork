@@ -1,22 +1,16 @@
 package com.example.androidhomework
 
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.bottom_navigation.*
 
-
 class MainActivity : AppCompatActivity() {
-
-    lateinit var toolbar: ActionBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val bottomNavigation: BottomNavigationView = findViewById(R.id.btv_main)
 
         val mOnNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -36,12 +30,10 @@ class MainActivity : AppCompatActivity() {
                     openFragment(thirdFragment)
                     true
                 }
-
                 else -> false
             }
         }
         btv_main.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
     }
 
     private fun openFragment(fragment: Fragment) {
