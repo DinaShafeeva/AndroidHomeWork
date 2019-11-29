@@ -15,5 +15,4 @@
             android:id="@+id/third"
             android:icon="@drawable/icon"
             android:title="@string/third" />
-
 </menu>

@@ -43,7 +43,6 @@ class SecondFragment : Fragment() {
         }
         rv_hero.adapter = adapter
         setRecyclerViewItemTouchListener()
-
         btn_show_dialog.setOnClickListener {
             showDialog()
         }

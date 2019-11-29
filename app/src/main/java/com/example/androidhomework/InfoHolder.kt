@@ -17,7 +17,7 @@ class InfoHolder(
     private val tv_description_info = containerView.tv_description_info
     private val viewPager = containerView.vp_info
     private val iv_ava_info = containerView.iv_ava_info
-    //private val indicator = containerView.indicator
+    // private val indicator = containerView.indicator
 
     fun bind(info: Info) {
         tv_name_info.text = info.nameOfHero
@@ -25,11 +25,10 @@ class InfoHolder(
         iv_ava_info.setImageResource(info.ava)
 
         val thirdFragment = ThirdFragment()
-
         val map = thirdFragment.getViewPager()
         val imageList: List<Int> = map.getValue(info.nameOfHero)
         viewPager.adapter = ViewPager(context, imageList)
-        //indicator.setViewPager(viewPager)
+        //   indicator.setViewPager(viewPager)
     }
 
     companion object {

@@ -31,24 +31,40 @@ class ThirdFragment : Fragment() {
     private fun getDataSource(): List<Info> = arrayListOf(
         Info("IronMan", "Iron suit and harisma", R.drawable.ironman),
         Info("CaptainAmerica", "Super patriotism and shield", R.drawable.cap),
-        Info("Thor", "Thunder and hummer", R.drawable.hulk),
+        Info("Thor", "Thunder and hummer", R.drawable.thor),
         Info("Hulk", "Anger and smash", R.drawable.hulk),
         Info("BlackWidow", "Guns and beauty", R.drawable.blackwidow),
         Info("Hawkeye", "Arrows", R.drawable.hawkeye),
         Info("ScarletWitch", "Magic", R.drawable.scarletwitch),
-        Info("Vision", "Technology and Mind Stone", R.drawable.hulk)
+        Info("Vision", "Technology and Mind Stone", R.drawable.vision)
     )
 
     fun getViewPager(): Map<String, ArrayList<Int>> = mapOf(
-        "IronMan" to arrayListOf(R.drawable.ironman, R.drawable.av1, R.drawable.av2),
+        "IronMan" to arrayListOf(
+            R.drawable.ironman,
+            R.drawable.av1,
+            R.drawable.av2,
+            R.drawable.av3
+        ),
         "CaptainAmerica" to arrayListOf(
             R.drawable.cap,
             R.drawable.av2,
             R.drawable.av3,
             R.drawable.av1
         ),
-        "Thor" to arrayListOf(R.drawable.cap, R.drawable.av2, R.drawable.av3, R.drawable.av1),
-        "Hulk" to arrayListOf(R.drawable.hulk, R.drawable.av2, R.drawable.av3, R.drawable.av1),
+        "Thor" to arrayListOf(
+            R.drawable.thor,
+            R.drawable.av2,
+            R.drawable.av3,
+            R.drawable.av1
+        ),
+        "Hulk" to arrayListOf(
+            R.drawable.hulk,
+            R.drawable.av2,
+            R.drawable.av3,
+            R.drawable.av1,
+            R.drawable.av2
+        ),
         "BlackWidow" to arrayListOf(
             R.drawable.blackwidow,
             R.drawable.av2,
@@ -67,11 +83,14 @@ class ThirdFragment : Fragment() {
             R.drawable.av3,
             R.drawable.av1
         ),
-        "Vision" to arrayListOf(R.drawable.scarletwitch, R.drawable.av2)
+        "Vision" to arrayListOf(
+            R.drawable.vision,
+            R.drawable.av2,
+            R.drawable.av1
+        )
     )
 
     companion object {
         fun newInstance(): ThirdFragment = ThirdFragment()
     }
 }
-

@@ -23,5 +23,4 @@ class InfoAdapter(
         dataSource = temp
         notifyItemRangeChanged(1, temp.size)
     }
-
 }

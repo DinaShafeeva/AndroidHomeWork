@@ -21,5 +21,4 @@ object Diff : DiffUtil.ItemCallback<Hero>() {
         }
         return if (diffBundle.isEmpty) null else diffBundle
     }
-
 }
