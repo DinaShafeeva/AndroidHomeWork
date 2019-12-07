@@ -24,8 +24,7 @@ class PreferencesFragment : Fragment() {
     }
 
     private fun nextFragment() {
-        fragmentManager.also {
-            it?.beginTransaction()?.apply {
+        fragmentManager?.beginTransaction()?.apply {
                 setCustomAnimations(
                     R.anim.enter_from_left,
                     R.anim.exit_from_right
@@ -35,8 +34,8 @@ class PreferencesFragment : Fragment() {
                 addToBackStack(ChoosePreferencesFragment::class.java.name)
                 commit()
             }
-            }
-        }
+
+    }
 
     companion object {
         fun newInstance(): PreferencesFragment = PreferencesFragment()

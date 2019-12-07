@@ -4,7 +4,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/choose_preferences_fragment"
-        tools:context=".ui.ChoosePreferencesFragment">
+        tools:context=".ui.ChoosePreferencesFragment"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
 
     <TextView
             android:id="@+id/tv_choose_preferences"
@@ -16,7 +20,7 @@
 
     <EditText
             android:id="@+id/et_first"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:ems="10"
@@ -25,7 +29,7 @@
 
     <EditText
             android:id="@+id/et_second"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="150dp"
             android:ems="10"
@@ -34,7 +38,7 @@
 
     <EditText
             android:id="@+id/et_third"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="200dp"
             android:ems="10"
@@ -47,6 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="#FFC107"
-            android:text="Add" />
+            android:text="Add"
+            android:textColor="#FFFFFF" />
 
 </FrameLayout>

@@ -8,17 +8,14 @@ import androidx.fragment.app.Fragment
 import com.example.androidhomework.R
 import kotlinx.android.synthetic.main.fragment_show_preferences.*
 
-
 class ShowPreferencesFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view: View = inflater.inflate(R.layout.fragment_show_preferences, container, false)
-        return view
-    }
+    ): View? = inflater.inflate(R.layout.fragment_show_preferences, container, false)
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,16 +29,16 @@ class ShowPreferencesFragment : Fragment() {
 
     companion object {
 
-        private const val FIRST = "first"
-        private const val SECOND = "second"
-        private const val THIRD = "third"
+        private const val ARG_FIRST = "first"
+        private const val ARG_SECOND = "second"
+        private const val ARG_THIRD = "third"
 
         fun newInstance(first: String = "NULL", second: String = "NULL", third: String = "NULL"):
                 ShowPreferencesFragment = ShowPreferencesFragment().apply {
             arguments = Bundle().apply {
-                putString(FIRST, first)
-                putString(SECOND, second)
-                putString(THIRD, third)
+                putString(ARG_FIRST, first)
+                putString(ARG_SECOND, second)
+                putString(ARG_THIRD, third)
             }
         }
     }
