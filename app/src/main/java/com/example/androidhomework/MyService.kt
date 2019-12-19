@@ -1,85 +1,102 @@
 package com.example.androidhomework
 
-import android.annotation.SuppressLint
+import android.app.NotificationManager
 import android.app.Service
+import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
-import android.os.Handler
+import android.os.Binder
 import android.os.IBinder
-import android.view.MotionEvent
-import android.view.View
-import android.widget.Button
-import android.widget.SeekBar
-import android.widget.Toast
-import androidx.annotation.Nullable
-
+import com.example.androidhomework.Constans.Companion.EXTRA_ICON
+import com.example.androidhomework.Constans.Companion.EXTRA_POSITION
+import com.example.androidhomework.Constans.Companion.EXTRA_SONG
+import com.example.androidhomework.MusicSource.Companion.index
+import com.example.androidhomework.MusicSource.Companion.mediaPlayer
+import com.example.androidhomework.MusicSource.Companion.musicList
 
 class MyService : Service() {
-    private var mediaPlayer: MediaPlayer? = null
-    private var buttonPlayStop: Button? = null
-    private var seekBar: SeekBar? = null
-    private var handler = Handler()
+    private var startId: Int = 1
+    private val mBinder: IBinder? = LocalBinder()
 
-    @SuppressLint("ClickableViewAccessibility")
-    override fun onCreate() {
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onCreate()
-        Toast.makeText(
-            this, "Служба создана",
-            Toast.LENGTH_SHORT
-        ).show()
-        mediaPlayer = MediaPlayer.create(this, R.raw.roots)
-        mediaPlayer?.setLooping(false)
+        val notificationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notification = Notification()
+        val music = intent?.extras?.getInt(EXTRA_SONG) ?: 1
+        val index = intent?.extras?.getInt(EXTRA_POSITION) ?: 1
 
-        mediaPlayer?.duration?.let { seekBar?.setMax(it) }
-        seekBar?.setOnTouchListener(object : View.OnTouchListener {
-            override fun onTouch(v: View, event: MotionEvent): Boolean {
-                seekChange(v)
-                return false
+        when (intent?.action) {
+            Constans.PAUSE_ACTION -> {
+                pause()
+                notification.showNotification(notificationManager, this, musicList[index])
             }
-        });
+            Constans.NEXT_SONG_ACTION -> {
+                nextSong(this)
+                notification.showNotification(notificationManager, this, musicList[index])
+            }
+            Constans.PREV_ACTION -> {
+                previousSong(this)
+                notification.showNotification(notificationManager, this, musicList[index])
+            }
+        }
+        return START_NOT_STICKY
     }
 
-    private fun seekChange(v: View) {
-        val mp = mediaPlayer
-        if (mp != null) {
-            if (mp.isPlaying) {
-                val sb = v as SeekBar
-                mediaPlayer?.seekTo(sb.progress)
-            }
+    override fun onBind(intent: Intent?): IBinder? {
+        val position = intent?.extras?.getInt(EXTRA_POSITION) ?: 1
+        val music = intent?.extras?.getInt(EXTRA_SONG) ?: 1
+        intent?.putExtra(EXTRA_ICON, R.drawable.ic_pause)
+        startSong(music, position)
+        startId++
+        return mBinder
+    }
+
+    inner class LocalBinder : Binder() {
+        fun getService() = MyService()
+    }
+
+    fun startSong(music: Int, position: Int) {
+        if (index != position) {
+            mediaPlayer.release()
+            mediaPlayer = MediaPlayer.create(this, music)
+            mediaPlayer.start()
+            index = position
         }
     }
 
+    fun nextSong(context: Context) {
+        mediaPlayer.release()
+        if (index < MusicSource.musicList.size - 1) {
+            index++
 
-    override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
-        Toast.makeText(
-            this, "Служба запущена",
-            Toast.LENGTH_SHORT
-        ).show()
-        mediaPlayer?.start()
-        return super.onStartCommand(intent, flags, startId)
+        } else {
+            index = 0
+            mediaPlayer = MediaPlayer.create(context, MusicSource.musicList[MusicSource.index].song)
+        }
+        mediaPlayer = MediaPlayer.create(context, MusicSource.musicList[MusicSource.index].song)
+        mediaPlayer.start()
     }
 
-
-    fun onPause() {
-        Toast.makeText(
-            this, "Песня остановлена",
-            Toast.LENGTH_SHORT
-        ).show()
-        mediaPlayer?.stop()
-        //pause();
+    fun previousSong(context: Context) {
+        mediaPlayer.release()
+        if (index > 0) {
+            index--
+            mediaPlayer =
+                MediaPlayer.create(context, musicList[index].song)
+        } else {
+            index = musicList.size - 1
+            mediaPlayer =
+                MediaPlayer.create(context, musicList[index].song)
+        }
+        mediaPlayer.start()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        Toast.makeText(
-            this, "Служба остановлена",
-            Toast.LENGTH_SHORT
-        ).show()
-        mediaPlayer?.stop()
-    }
-
-    @Nullable
-    override fun onBind(intent: Intent): IBinder? {
-        return null
+    fun pause() {
+        if (MusicSource.mediaPlayer.isPlaying) {
+            mediaPlayer.pause()
+        } else {
+            mediaPlayer.start()
+        }
     }
 }
