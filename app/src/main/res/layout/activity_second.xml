@@ -54,24 +54,14 @@
             app:layout_constraintTop_toBottomOf="@id/tv_singer_second_activity"
             tools:text="Genre" />
 
-    <SeekBar
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/sb_seekBar"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_play_stop" />
-
     <Button
             android:id="@+id/btn_play_stop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/ic_play"
-            android:text="play"
             android:textSize="15pt"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/sb_seekBar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_genre_second_activity" />
@@ -84,7 +74,6 @@
             android:backgroundTint="@color/colorPrimary"
             app:layout_constraintStart_toEndOf="@id/btn_play_stop"
             app:layout_constraintTop_toBottomOf="@id/tv_genre_second_activity"
-            app:layout_constraintBottom_toBottomOf="@id/sb_seekBar"
             app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
@@ -95,6 +84,5 @@
             android:backgroundTint="@color/colorPrimary"
             app:layout_constraintEnd_toStartOf="@id/btn_play_stop"
             app:layout_constraintTop_toBottomOf="@id/tv_genre_second_activity"
-            app:layout_constraintBottom_toBottomOf="@id/sb_seekBar"
             app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

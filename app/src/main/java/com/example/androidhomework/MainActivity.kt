@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun navigateToSecondActivity(music: Music) {
-        //MyService.startService(this, musicList.indexOf(music), music)
         startActivity(SecondActivity.createIntent(this, this, music, index))
     }
 }

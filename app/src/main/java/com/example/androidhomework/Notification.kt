@@ -70,19 +70,6 @@ class Notification {
         }
     }
 
-    //        fun createPlayerNotification(context: Context, channelId: String, contentIntent: PendingIntent, prevIntent: PendingIntent,
-//                                     pauseIntent: PendingIntent, nextIntent: PendingIntent) =
-//            NotificationCompat.Builder(context, channelId)
-//                .setSmallIcon(R.drawable.ic_notifications_black_24dp)
-//                .setContentTitle("Player")
-//                .setContentText("Text")
-//                .setContentIntent(contentIntent)
-//                .addAction(R.drawable.ic_prev, "Previous", prevIntent)
-//                .addAction(R.drawable.ic_play, "Pause", pauseIntent)
-//                .addAction(R.drawable.ic_next, "Next", nextIntent)
-//                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-//                .build()
-//
     fun createPausePendingIntent(context: Context): PendingIntent {
         val intent = Intent(context, MyService::class.java)
         intent.action = Constans.PAUSE_ACTION
@@ -99,7 +86,6 @@ class Notification {
         val intent = Intent(context, MyService::class.java)
         intent.action = Constans.PREV_ACTION
         return PendingIntent.getService(context, 0, intent, 0)
-
     }
 
     companion object {

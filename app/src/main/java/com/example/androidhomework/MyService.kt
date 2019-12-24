@@ -7,9 +7,9 @@ import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Binder
 import android.os.IBinder
-import com.example.androidhomework.Constans.Companion.EXTRA_ICON
-import com.example.androidhomework.Constans.Companion.EXTRA_POSITION
-import com.example.androidhomework.Constans.Companion.EXTRA_SONG
+import com.example.androidhomework.Constans.Companion.KEY_ICON
+import com.example.androidhomework.Constans.Companion.KEY_POSITION
+import com.example.androidhomework.Constans.Companion.KEY_SONG
 import com.example.androidhomework.MusicSource.Companion.index
 import com.example.androidhomework.MusicSource.Companion.mediaPlayer
 import com.example.androidhomework.MusicSource.Companion.musicList
@@ -23,8 +23,8 @@ class MyService : Service() {
         val notificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val notification = Notification()
-        val music = intent?.extras?.getInt(EXTRA_SONG) ?: 1
-        val index = intent?.extras?.getInt(EXTRA_POSITION) ?: 1
+        val music = intent?.extras?.getInt(KEY_SONG) ?: 1
+        val index = intent?.extras?.getInt(KEY_POSITION) ?: 1
 
         when (intent?.action) {
             Constans.PAUSE_ACTION -> {
@@ -44,9 +44,9 @@ class MyService : Service() {
     }
 
     override fun onBind(intent: Intent?): IBinder? {
-        val position = intent?.extras?.getInt(EXTRA_POSITION) ?: 1
-        val music = intent?.extras?.getInt(EXTRA_SONG) ?: 1
-        intent?.putExtra(EXTRA_ICON, R.drawable.ic_pause)
+        val position = intent?.extras?.getInt(KEY_POSITION) ?: 1
+        val music = intent?.extras?.getInt(KEY_SONG) ?: 1
+        intent?.putExtra(KEY_ICON, R.drawable.ic_pause)
         startSong(music, position)
         startId++
         return mBinder

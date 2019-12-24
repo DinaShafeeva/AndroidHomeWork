@@ -4,7 +4,6 @@ import android.media.MediaPlayer
 
 class MusicSource {
     companion object {
-
         var musicList =
             getDataSource()
         var index = -1
