@@ -27,7 +27,7 @@ class DataBaseHandler(
 
     override fun onCreate(db: SQLiteDatabase?) {
         val CREATE_NOTES_TABLE = ("CREATE TABLE " + TABLE_NOTES + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_TITLE + " TEXT,"
+                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_TITLE + " TEXT,"
                 + KEY_DESCRIPTION + " TEXT," + KEY_DATE + " DATE," + KEY_LONGITUDE + " INTEGER,"
                 + KEY_LATITUDE + " INTEGER" + ")")
         db?.execSQL(CREATE_NOTES_TABLE)
@@ -79,8 +79,8 @@ class DataBaseHandler(
         } else return null
     }
 
-    override fun getAllNotes(): List<Note> {
-        val noteList: MutableList<Note> = ArrayList<Note>()
+    override fun getAllNotes(): ArrayList<Note> {
+        val noteList: ArrayList<Note> = ArrayList<Note>()
         val selectQuery = "SELECT  * FROM $TABLE_NOTES"
 
         val db = this.writableDatabase

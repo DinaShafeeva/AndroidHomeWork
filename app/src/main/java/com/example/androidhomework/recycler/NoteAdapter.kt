@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
 class NoteAdapter(
-    private var noteList: List<Note>,
+    private var noteList: ArrayList<Note>,
     private val clickLambda: (Note) -> Unit
 ) : RecyclerView.Adapter<NoteHolder>() {
 
@@ -18,4 +18,14 @@ class NoteAdapter(
 
     override fun onBindViewHolder(holder: NoteHolder, position: Int) =
         holder.bind(noteList[position])
+
+    fun updateList(newList: ArrayList<Note>) {
+        androidx.recyclerview.widget.DiffUtil.calculateDiff(
+            DiffUtil(this.noteList, newList),
+            true
+        )
+            .dispatchUpdatesTo(this)
+        this.noteList.clear()
+        this.noteList.addAll(newList)
+    }
 }
