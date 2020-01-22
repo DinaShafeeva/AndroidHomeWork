@@ -31,16 +31,18 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun onClick() {
-
         val note = Note(
             1, et_title.text.toString(), et_description.text.toString(),
             et_date.text.toString().toInt(), et_longitude.text.toString().toInt(),
             et_latitude.text.toString().toInt()
         )
-        db.addNote(note)
+        if (intent?.extras?.getInt(KEY_NOTE) == -1) {
+            db.addNote(note)
+        } else {
+            db.updateNote(note)
+        }
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
-
     }
 
     companion object {
