@@ -14,8 +14,6 @@ class DataBaseHandler(
     version: Int
 ) : SQLiteOpenHelper(context, name, factory, version), IDatabaseHandler {
 
-    private val DATABASE_VERSION = 1
-    private val DATABASE_NAME = "noteBD"
     private val TABLE_NOTES = "note"
     private val KEY_ID = "id"
     private val KEY_TITLE = "title"
@@ -24,11 +22,10 @@ class DataBaseHandler(
     private val KEY_LONGITUDE = "longitude"
     private val KEY_LATITUDE = "latitude"
 
-
     override fun onCreate(db: SQLiteDatabase?) {
         val CREATE_NOTES_TABLE = ("CREATE TABLE " + TABLE_NOTES + "("
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_TITLE + " TEXT,"
-                + KEY_DESCRIPTION + " TEXT," + KEY_DATE + " DATE," + KEY_LONGITUDE + " INTEGER,"
+                + KEY_DESCRIPTION + " TEXT," + KEY_DATE + " DATE," + KEY_LONGITUDE + " DATE,"
                 + KEY_LATITUDE + " INTEGER" + ")")
         db?.execSQL(CREATE_NOTES_TABLE)
     }
@@ -74,7 +71,7 @@ class DataBaseHandler(
             return Note(
                 cursor.getInt(0),
                 cursor.getString(1), cursor.getString(2),
-                cursor.getInt(3), cursor.getInt(4), cursor.getInt(5)
+                cursor.getString(3), cursor.getInt(4), cursor.getInt(5)
             )
         } else return null
     }
@@ -82,7 +79,6 @@ class DataBaseHandler(
     override fun getAllNotes(): ArrayList<Note> {
         val noteList: ArrayList<Note> = ArrayList<Note>()
         val selectQuery = "SELECT  * FROM $TABLE_NOTES"
-
         val db = this.writableDatabase
         val cursor = db.rawQuery(selectQuery, null)
 
@@ -91,12 +87,11 @@ class DataBaseHandler(
                 val note = Note(
                     cursor.getInt(0),
                     cursor.getString(1), cursor.getString(2),
-                    cursor.getInt(3), cursor.getInt(4), cursor.getInt(5)
+                    cursor.getString(3), cursor.getInt(4), cursor.getInt(5)
                 )
                 noteList.add(note)
             } while (cursor.moveToNext())
         }
-
         return noteList
     }
 

@@ -7,12 +7,14 @@ import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.androidhomework.dao.DataBaseHandler
-import com.example.androidhomework.recycler.GridItemDecoration
 import com.example.androidhomework.recycler.Note
 import com.example.androidhomework.recycler.NoteAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.note_item.*
-
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 val DATABASE_VERSION = 1
 val DATABASE_NAME = "noteBD"
@@ -31,28 +33,22 @@ class MainActivity : AppCompatActivity() {
 
         val notes: ArrayList<Note> = db.getAllNotes()
 
-        rv_note.addItemDecoration(
-            GridItemDecoration(
-                10,
-                2
-            )
-        )
-
         adapter =
             NoteAdapter(notes) { note ->
-                navigateToSecondActivity(note.id)
                 btn_delete.setOnClickListener { delete(note) }
+                navigateToSecondActivity(note.id)
             }
         rv_note.adapter = adapter
 
         btn_add_note.setOnClickListener { navigateToSecondActivity(-1) }
 
-
     }
 
     private fun delete(note: Note) {
         db.deleteNote(note)
-        adapter?.updateList(db.getAllNotes())
+        val job: Job = GlobalScope.launch(Dispatchers.IO) {
+            adapter?.updateList(db.getAllNotes())
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -63,14 +59,12 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.getItemId() == R.id.btn_delete_all) {
             db.deleteAll()
-            adapter?.updateList(db.getAllNotes())
+            val job: Job = GlobalScope.launch(Dispatchers.IO) {
+                adapter?.updateList(db.getAllNotes())
+            }
             return true
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun onClick() {
-        startActivity(SecondActivity.createIntent(this, -1))
     }
 
     private fun navigateToSecondActivity(id: Int) {
