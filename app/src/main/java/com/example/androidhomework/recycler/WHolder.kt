@@ -1,6 +1,5 @@
 package com.example.androidhomework.recycler
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,12 +15,9 @@ class WHolder(
     private val clickLambda: (Weather) -> Unit
 ) : RecyclerView.ViewHolder(containerView), LayoutContainer {
 
-    @SuppressLint("ResourceAsColor")
+
     fun bind(weather: Weather) {
-        val firstBorder: Double = -10.0
-        val secondBorder: Double = 0.0
-        val thirdBorder: Double = 1.0
-        val fourthBorder: Double = 10.0
+
 
         tv_city.text = weather.name
         if (weather.main.temp < firstBorder) {
@@ -42,6 +38,11 @@ class WHolder(
     }
 
     companion object {
+        const val firstBorder = -10.0
+        const val secondBorder: Double = 0.0
+        const val thirdBorder: Double = 1.0
+        const val fourthBorder: Double = 10.0
+
         fun create(
             parent: ViewGroup,
             clickLambda: (Weather) -> Unit

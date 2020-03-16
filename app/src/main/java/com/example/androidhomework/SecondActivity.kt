@@ -30,25 +30,36 @@ class SecondActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     }
 
     private fun getDirection(deg: Int): String {
-        if (deg >= 337.5 && deg <= 22.5) {
-            return "N"
-        } else if (deg > 22.5 && deg < 67.5) {
-            return "NE"
-        } else if (deg >= 67.5 && deg <= 112.5) {
-            return "E"
-        } else if (deg > 112.5 && deg < 157.5) {
-            return "SE"
-        } else if (deg >= 157.5 && deg <= 202.5) {
-            return "S"
-        } else if (deg > 202.5 && deg < 247.5) {
-            return "SW"
-        } else if (deg >= 247.5 && deg <= 292.5) {
-            return "W"
+        var wind: String
+        if (deg >= wind8 && deg <= wind1) {
+            wind = "N"
+        } else if (deg > wind1 && deg < wind2) {
+            wind = "NE"
+        } else if (deg >= wind2 && deg <= wind3) {
+            wind = "E"
+        } else if (deg > wind3 && deg < wind4) {
+            wind = "SE"
+        } else if (deg >= wind4 && deg <= wind5) {
+            wind = "S"
+        } else if (deg > wind5 && deg < wind6) {
+            wind = "SW"
+        } else if (deg >= wind6 && deg <= wind7) {
+            wind = "W"
         } else
-            return "NW"
+            wind = "NW"
+        return wind
     }
 
     companion object {
+        const val wind1 = 22.5
+        const val wind2 = 67.5
+        const val wind3 = 112.5
+        const val wind4 = 157.5
+        const val wind5 = 202.5
+        const val wind6 = 247.5
+        const val wind7 = 292.5
+        const val wind8 = 337.5
+
         private const val KEY_ID = "id"
         fun createIntent(
             activity: Activity,

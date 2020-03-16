@@ -18,6 +18,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
+import java.io.IOException
 
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     private lateinit var service: WeatherService
@@ -25,13 +26,12 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     val permissionRequestCode = 1
     var longitude: Double = 0.0
     var latitude: Double = 0.0
-    val cityCount: Int = 10
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var list: ArrayList<Weather> = ArrayList()
+        val list: ArrayList<Weather> = ArrayList()
         adapter = WAdapter(list) { weather ->
             navigateToSecondActivity(weather.id)
         }
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
                 }
                 adapter?.weatherList = response.list
                 adapter?.notifyDataSetChanged()
-            } catch (ex: Exception) {
+            } catch (ex: IOException) {
                 Snackbar.make(
                     findViewById(android.R.id.content),
                     "City wasn't found",
@@ -61,7 +61,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
                 )
                     .show()
             }
-
         }
     }
 
@@ -90,7 +89,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
                     service.weatherByName(query)
                 }
                 startActivity(SecondActivity.createIntent(this@MainActivity, response.id))
-            } catch (e: Exception) {
+            } catch (e: IOException) {
                 Snackbar.make(
                     findViewById(android.R.id.content),
                     "Город не найден",
@@ -156,5 +155,9 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
                 arrayOf(ACCESS_FINE_LOCATION, ACCESS_COARSE_LOCATION)
             this.requestPermissions(permissions, permissionRequestCode)
         }
+    }
+
+    companion object {
+        const val cityCount: Int = 10
     }
 }
