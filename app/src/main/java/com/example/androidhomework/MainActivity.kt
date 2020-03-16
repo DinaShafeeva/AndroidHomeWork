@@ -77,7 +77,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
             override fun onQueryTextChange(newText: String): Boolean {
                 return false
             }
-
         });
         return true;
     }
